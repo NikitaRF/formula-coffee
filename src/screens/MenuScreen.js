@@ -62,7 +62,7 @@ export const MenuScreen = () => {
 
     return (
         <View style={styles.center}>
-            <ScrollView style={styles.scrollMenu} horizontal={true}>
+            <ScrollView style={styles.scrollMenu} horizontal={true} showsHorizontalScrollIndicator={false}>
                 <TouchableOpacity onPress={() => menuToggle('drinks')} style={menuSelected.currentMenuSelected == 'drinks' ? styles.menuItemBlockSelected : styles.menuItemBlock}>
                     <Text style={styles.menuItemText}>Напитки</Text>
                 </TouchableOpacity>
