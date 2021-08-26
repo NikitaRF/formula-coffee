@@ -118,6 +118,7 @@ export const BasketScreen = ({navigation}) => {
         }
 
         const data = {
+            userId: firebase.auth().currentUser.uid,
             date: currentDate,
             timestamp: nowDate.getTime(),
             status: 'В обработке',
