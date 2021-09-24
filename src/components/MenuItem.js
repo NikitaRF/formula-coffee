@@ -10,7 +10,7 @@ import {deleteItemFromBasket} from "../store/actions/deleteItemFromBasket";
 
 export const MenuItem = ({Item, State}) => {
     const date = new Date()
-    if (State === '/menu/eat/breakfasts' || date.getHours() > 14 && date.getHours() <= 9) {
+    if (State === '/menu/eat/breakfasts' && (date.getHours() >= 16 && date.getHours() <= 9)) {
         return (
             <View style={styles.breakfastWrap}>
                 <Text style={styles.breakfastText}>Время завтраков с 09:00 до 16:00</Text>
