@@ -8,7 +8,18 @@ import {useDispatch, useSelector} from "react-redux";
 import {addToBasket} from "../store/actions/addToBasket";
 import {deleteItemFromBasket} from "../store/actions/deleteItemFromBasket";
 
-export const MenuItem = ({Item}) => {
+export const MenuItem = ({Item, State}) => {
+    const date = new Date()
+    if (State === '/menu/eat/breakfasts' || date.getHours() > 14 && date.getHours() <= 9) {
+        console.log('Завтраки', State)
+        console.log(date.getHours())
+        return (
+            <View style={styles.breakfastWrap}>
+                <Text style={styles.breakfastText}>Время завтраков с 09:00 до 16:00</Text>
+            </View>
+        )
+    }
+
     const [count, setCount] = useState(0)
 
     const basketCount = useSelector(state => state.menu.basket.filter(el => el.name == Item.name))
@@ -42,6 +53,8 @@ export const MenuItem = ({Item}) => {
             dispatch(deleteItemFromBasket(Item.name))
         }
     }
+
+
 
     return (
         <View style={Item.avaible ? styles.mainWrap : {...styles.mainWrap, opacity: 0.3}}>
@@ -99,6 +112,15 @@ export const MenuItem = ({Item}) => {
 }
 
 const styles = StyleSheet.create({
+    breakfastWrap:{
+        alignItems: 'center',
+        justifyContent: "center",
+        marginTop: 50
+    },
+    breakfastText: {
+        color: THEME.COLOR_MAIN_DARK,
+        fontFamily: THEME.FONT_BOLD,
+    },
     mainWrap: {
         width: Dimensions.get('window').width,
         marginVertical: 10,

@@ -100,7 +100,7 @@ export const MenuScreen = () => {
                     keyExtractor={(menu) => menu.name}
                     refreshing={true}
                     refreshControl={<RefreshControl refreshing={refreshing} onRefresh={onRefresh} />}
-                    renderItem={({item}) => <MenuItem Item={item} /> }
+                    renderItem={({item}) => <MenuItem Item={item} State={state.currentState} /> }
                 />
             </View>
         </View>
@@ -120,11 +120,11 @@ const styles = StyleSheet.create({
         borderColor: THEME.COLOR_MAIN_LIGHT,
     },
     menuItemBlock: {
-        paddingVertical: 10,
+        justifyContent: 'center',
         paddingHorizontal: 10,
     },
     menuItemBlockSelected: {
-        paddingVertical: 10,
+        justifyContent: 'center',
         paddingHorizontal: 10,
         backgroundColor: THEME.COLOR_MAIN_LIGHT,
     },
