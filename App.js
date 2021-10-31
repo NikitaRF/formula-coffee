@@ -12,6 +12,7 @@ import {Root} from "./src/components/Root";
 import "intl";
 import "intl/locale-data/jsonp/en";
 
+
 export default function App() {
     const [isReady, setIsReady] = useState(false)
 
