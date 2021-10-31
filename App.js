@@ -6,6 +6,11 @@ import { bootstrap } from "./src/bootstrap";
 import store from './src/store';
 import {Root} from "./src/components/Root";
 
+// Ошибка на Android, не мог найти переменную Intl
+// Устанавливаем npm i intl expo-localization
+// и добавляем:
+import "intl";
+import "intl/locale-data/jsonp/en";
 
 export default function App() {
     const [isReady, setIsReady] = useState(false)
