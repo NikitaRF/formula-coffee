@@ -7,7 +7,7 @@ import {
     StyleSheet,
     Text,
     TextInput,
-    TouchableOpacity,
+    TouchableOpacity, TouchableOpacityComponent,
     View
 } from "react-native";
 import {useDispatch, useSelector} from "react-redux";
@@ -420,13 +420,11 @@ export const BasketScreen = ({navigation}) => {
                         />
                         <Text style={styles.textLuckBold}>Ваш заказ успешно принят</Text>
                         <Text style={styles.textLuckRegular}>{date.toLocaleString('ru-Ru')}</Text>
-                        <View style={{...styles.buttonWrap, marginTop: 20}}>
-                            <Button
-                                color={THEME.COLOR_MAIN_DARK}
-                                title='Готово'
-                                onPress={() => luckModalClose()}
-                            />
-                        </View>
+                            <TouchableOpacity
+                                style={{...styles.buttonWrap, marginTop: 20}}
+                                onPress={() => luckModalClose()}>
+                                <Text style={{...styles.buttonText, paddingVertical: 5, fontSize: 15}}>Готово</Text>
+                            </TouchableOpacity>
                         <Text></Text>
                     </View>
                 </ScrollView>
