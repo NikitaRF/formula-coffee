@@ -23,6 +23,7 @@
     "expo-localization": "~13.1.0",
     "expo-notifications": "~0.16.1",
     "expo-status-bar": "~1.4.0",
+    "expo-updates": "^0.14.7",
     "firebase": "^8.6.8",
     "intl": "^1.2.5",
     "react": "18.0.0",
