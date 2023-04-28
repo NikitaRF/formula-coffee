@@ -1,5 +1,5 @@
 import React, {useCallback, useEffect, useState} from "react";
-import {useFocusEffect, useIsFocused} from '@react-navigation/native'
+import {useIsFocused} from '@react-navigation/native'
 import {
     ActivityIndicator,
     FlatList, RefreshControl,
@@ -54,12 +54,6 @@ export const HistoryScreen = () => {
     const filteredHistoryData = historyData.sort(function (el1, el2){
         return el1.timestamp < el2.timestamp
     })
-
-
-
-
-
-
 
 
 

@@ -1,13 +1,13 @@
 import React, {useEffect, useState} from "react";
 import {
-    ActivityIndicator, Alert, Button,
+    ActivityIndicator, Alert,
     FlatList, Image,
     Modal,
     ScrollView,
     StyleSheet,
     Text,
     TextInput,
-    TouchableOpacity, TouchableOpacityComponent,
+    TouchableOpacity,
     View
 } from "react-native";
 import {useDispatch, useSelector} from "react-redux";
@@ -136,23 +136,18 @@ export const BasketScreen = ({navigation}) => {
             comment: state.comment === '' ? 'Комментарий отсутствует' : state.comment,
         }
 
+
         if (firebase.auth().currentUser) {
             const userUid = firebase.auth().currentUser.uid
             const db = firebase.firestore();
-            const userInfo = db.collection("users").doc(userUid);
-
+            const ordersList = db.collection('orders')
             setState({
                 ...state,
                 isLoading: true,
             })
-            await userInfo.update({'historyOfOrder' : firebase.firestore.FieldValue.arrayUnion(data)})
 
-            //и еще добавляем сам заказ в общий список (будущий) для приложения менеджеров
-            // await db.collection("users").add({
-            //     historyOfOrder2: "Tokyo",
-            // })
+            await ordersList.add(data)
 
-            // dispatch(addOrder(data))
             setState({
                 ...state,
                 isLoading: false,

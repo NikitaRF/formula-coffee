@@ -18,7 +18,6 @@ export const menuReducer = (state = initialState, action) => {
         }
         case ADD_TO_BASKET:
             const foundEl = state.basket.findIndex(el => el.name == action.payload.name);
-            console.log(foundEl)
             if (foundEl == -1){
                 return {
                     ...state,
@@ -27,7 +26,6 @@ export const menuReducer = (state = initialState, action) => {
             }
             const currentBasket = state.basket.slice()
             currentBasket[foundEl] = action.payload
-            console.log("В редьюсере сейчас вот этот массив", currentBasket)
             // if (action.payload.count == 0) {
             //
             // }
@@ -36,7 +34,6 @@ export const menuReducer = (state = initialState, action) => {
             basket:  currentBasket
         }
         case DELETE_ITEM_FROM_BASKET:
-            console.log('DELETE_ITEM_FROM_BASKET', action.payload)
             const curBasket = state.basket.slice()
             const result = curBasket.filter((item => item.name !== action.payload))
 

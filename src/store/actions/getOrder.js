@@ -1,31 +1,27 @@
 import {GET_ORDER} from "../types";
 import firebase from "firebase";
 
-
 export const getOrder = () => {
 
     const getOrderInfoOnDB = async () => {
         const userUid = firebase.auth().currentUser.uid
         const db = firebase.firestore();
-        const userInfo = db.collection("users").doc(userUid);
+        const ordersInfo = db.collection(`orders`).where('userId', '==', `${userUid}`);
 
-        const result = await userInfo.get().then((doc) => {
-
-            if (doc.exists) {
-                // console.log("Document data:", doc.data().historyOfOrder);
-                return doc.data().historyOfOrder
+        const result = await ordersInfo.get().then((doc) => {
+            let arrayOfOrders = []
+            doc.forEach((dat) => {
+                arrayOfOrders.push(dat.data())
+            });
+            if (arrayOfOrders.length !== 0) {
+                return arrayOfOrders
             } else {
-                // doc.data() will be undefined in this case
                 console.log("No such document!");
             }
-        }).catch((error) => {
-            console.log("Error getting document:", error);
-        });
+        })
 
         return result
     }
-
-
 
     return async dispatch => {
         const dataOrder = await getOrderInfoOnDB()
